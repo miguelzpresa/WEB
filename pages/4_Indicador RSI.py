@@ -1,4 +1,5 @@
 import streamlit as st
+import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import requests
@@ -44,10 +45,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=rsi_30_min.index, y=rsi_30_min['volume'], marker_color='purple')])
+    fig = px.line(rsi_30_min, x=rsi_30_min.index, y=rsi_30_min['volume'])
     fig.update_layout(
         xaxis_title="Index",
-        yaxis_title="Volumen",
+        yaxis_title="RSI",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -72,10 +73,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=rsi_4_horas['date_price'], y=rsi_4_horas['volume'], marker_color='purple')])
+    fig = px.line(rsi_4_horas, x=rsi_4_horas['date_price'], y=rsi_4_horas['volume'])
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="RSI",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -100,10 +101,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=rsi_4_dias['date_price'], y=rsi_4_dias['volume'], marker_color='purple')])
+    fig = px.line(rsi_4_dias, x=rsi_4_dias['date_price'], y=rsi_4_dias['volume'])
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="RSI",
     )
     st.plotly_chart(fig, use_container_width=True)
 
