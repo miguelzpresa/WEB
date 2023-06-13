@@ -125,26 +125,52 @@ During the first iterations of the project, free software tools for information 
 
 # Data Storage :floppy_disk:
 ---
-data lake
-Data warehousing
-Possible tools to use for data storage:
--Apache Hive
--Apache Spark
-In this stage, a division will be made in the database to store all the types of data and the different phases in which they are found.
-The first division of the database will be to store the data provided by the data acquisition system, these data will be the ones that are worked on during the processing stage and the results of this stage will be stored in the second division of the database. of data so that they can be used in the publication stage  
+### Dockerized PostgreSQL Database
+
+This database system utilizes Docker and PostgreSQL to create a containerized environment for storing and managing data. The purpose of this system is to facilitate the management of cryptocurrency price data.  
+
+The system includes three tables: assets, half_hours, and four_hours, each serving a specific purpose.  
+
+The assets table stores information about different cryptocurrencies, including their unique identifier (coin_id) and symbol (symbol).  
+
+The half_hours table records price data for cryptocurrencies at half-hour intervals, including the opening, high, low, closing prices (open, high, low, close) and trading volume (volume).  
+
+Similarly, the four_hours table captures price data at four-hour intervals, with the same column structure as the half_hours table.  
+
+All tables are created using the CREATE TABLE IF NOT EXISTS statement, ensuring they are only created if they do not already exist in the PostgreSQL database.    
+
+The system leverages Docker to provide a containerized environment, which enhances portability, scalability, and ease of deployment. Docker enables isolation and simplifies the process of setting up the database system, making it more efficient and convenient to manage the PostgreSQL database for storing cryptocurrency price data.
+
+
+
+---  
 # Processing Data System :mailbox_with_mail:
 ---
-In this project, we aim to process historical data of cryptocurrencies to identify patterns and trends within their behavior, and use this information to make informed trading decisions.
+Our Processing System code represents generates and processes data related to cryptocurrency price indicators.  
 
-We have chosen to focus on several key indices, including: IRS, Pivot Point, Fibonacci retracement, EMA, and stochastic oscillator, as these indices have proven to be effective in predicting market trends and making informed trading decisions. By calculating these indices for various cryptocurrencies, we can identify potential entry and exit points for trades, and make more profitable trading decisions.  
+Functionalities  :
+ The system consists of various functions:     
+-RSI14(df, n): Calculates the RSI14 of a given DataFrame df using a specified window size n. The function adds the RSI_14 column to the DataFrame.  
+-MACD(df): This function calculates the Moving Average Convergence Divergence (MACD) indicator for a given DataFrame df. Currently, it is commented out and not used in the code.    
+-MOM(df, n): Computes the Momentum indicator for a given DataFrame df using a specified period n. The function adds the Momentum column to the DataFrame.    
+-PPSR(df): Calculates Pivot Points, Supports, and Resistances (PPSR) for a given DataFrame df containing high, low, and close price values. The function adds columns for PP, R1, S1, R2, S2, R3, and S3 to the DataFrame.    
+-graficador2(indi, temporalidad, cols=None): This function generates candlestick charts using the mplfinance library. It takes an indicator name (indi) and a time frame (temporalidad) as inputs. If the indicator is "ppsr," it plots the PPSR values from the DataFrame using the specified color (b). Otherwise, it plots the indicator values from the DataFrame using the corresponding color (b, g, or r). The function returns the generated chart and the modified DataFrame.
 
+main():  
+The main function serves as the entry point for the program. It prompts the user to select a cryptocurrency asset (bitcoin, ethereum, ripple, matic_network, or polkadot) and connects to the PostgreSQL database. It then retrieves price data for different indicators and time frames, such as RSI_14, MACD, Stochastic Indicator (Indi_Stocástico), and PPSR. The function calls graficador2 to generate charts and saves them as PNG images. It also saves the processed DataFrame as a CSV file.  The system provides flexibility for selecting different indicators and time frames for visualization and analysis. It utilizes PostgreSQL as the underlying database for data storage and retrieval.   
+
+Output:  
+The generated charts and processed data files are saved in the images_output and pdfs_output directories, respectively, within the same directory as the script.  Overall, this processor system offers a way to retrieve, process, and visualize cryptocurrency price data using various indicators, facilitating technical analysis and research.
+
+
+---
 ##### Methodology:
-
+---
 Exploratory Data Analysis (EDA) : We will begin by performing exploratory data analysis of the provided historical data to identify any trends or patterns in the time series data. This will involve visualizing the data, analyzing the distribution of the data, and identifying any outliers or anomalies.
 
 Statistical Techniques: We plan to use a variety of statistical techniques to analyze the time series data, including time series decomposition, autocorrelation analysis, and statistical modeling. These techniques will help us to identify any trends, seasonal patterns, or other time-dependent relationships within the data.
 
-Applying Indices: We will apply various indices such as IRS, Fibonacci, EMA, and stochastic oscillator to the time series data at different time frames (e.g., daily, weekly, monthly, etc.). This will help us to identify potential entry and exit points for trades, as well as to identify patterns of trend, consolidation, resistance breakthroughs, and momentum.
+Applying Indices: We will apply various indices such as IRS_14,MACD ,ppsr, and stochastic oscillator to the time series data at different time frames (e.g., daily, weekly, monthly, etc.). This will help us to identify potential entry and exit points for trades, as well as to identify patterns of trend, consolidation, resistance breakthroughs, and momentum.
 
 Pattern Identification: Once we have applied the indices, we will use them to identify patterns of trend, consolidation, resistance breakthroughs, and momentum within the data. This will involve identifying support and resistance levels, analyzing trends and patterns over time, and identifying potential breakouts or breakdowns in the data.
 
@@ -202,5 +228,7 @@ Once the system is in production, it must be ensured that it remains up-to-date 
 
 # References :peach:
 ---
+
+
 
 '''
