@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 import requests
+import plotly.express as px
 
 
 st.set_page_config(page_title='Indicador MACD', page_icon='https://avatars.githubusercontent.com/u/127362849?s=200&v=4', layout="wide")
@@ -44,10 +45,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=macd_30_min.index, y=macd_30_min['volume'], marker_color='purple')])
+    fig = px.line(macd_30_min, x=macd_30_min.index, y=macd_30_min['macd'])
     fig.update_layout(
         xaxis_title="Index",
-        yaxis_title="Volumen",
+        yaxis_title="MACD",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -72,10 +73,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=macd_4_horas['date_price'], y=macd_4_horas['volume'], marker_color='purple')])
+    fig = px.line(macd_4_horas, x=macd_4_horas['date_price'], y=macd_4_horas['volume'])
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="MACD",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -99,10 +100,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=macd_4_dias['date_price'], y=macd_4_dias['volume'], marker_color='purple')])
+    fig = px.line(macd_4_dias, x=macd_4_dias['date_price'], y=macd_4_dias['volume'])
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="MACD",
     )
     st.plotly_chart(fig, use_container_width=True)
 

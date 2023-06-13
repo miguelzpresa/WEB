@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
+import plotly.express as px
 import requests
 
 
@@ -44,10 +45,11 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=ppsr_30_min.index, y=ppsr_30_min['volume'], marker_color='purple')])
+    #Y= ['PP','R1','S1','R2','S2','R3','S3'] 
+    fig = px.line(ppsr_30_min, x=ppsr_30_min.index, y=['PP','R1','S1','R2','S2','R3','S3'] ,title ="30 mins")
     fig.update_layout(
         xaxis_title="Index",
-        yaxis_title="Volumen",
+        yaxis_title="PPSR",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -72,10 +74,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=ppsr_4_horas['date_price'], y=ppsr_4_horas['volume'], marker_color='purple')])
+    fig = px.line(ppsr_4_horas, x=ppsr_4_horas['date_price'], y=['PP','R1','S1','R2','S2','R3','S3'] ,title =" 4hrs")
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="PPSR",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -100,10 +102,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=ppsr_4_dias['date_price'], y=ppsr_4_dias['volume'], marker_color='purple')])
+    fig = px.line(ppsr_4_dias, x=ppsr_4_dias['date_price'], y=['PP','R1','S1','R2','S2','R3','S3'] ,title =" 4days")
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="PPSR",
     )
     st.plotly_chart(fig, use_container_width=True)
 

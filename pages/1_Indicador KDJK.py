@@ -1,12 +1,12 @@
 import streamlit as st
 import plotly.graph_objects as go
+import plotly.express as px
 import pandas as pd
 import requests
 
 
 st.set_page_config(page_title='Indicador KDJK', page_icon='https://avatars.githubusercontent.com/u/127362849?s=200&v=4', layout="wide")
 st.sidebar.header("Indicador KDJK")
-
 
 coin_gecko_response = requests.get('https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd&include_24hr_change=true').json()
 xrp_val = coin_gecko_response['ripple']['usd']
@@ -45,10 +45,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=kdjk_30_min.index, y=kdjk_30_min['volume'], marker_color='purple')])
+    fig = px.line(kdjk_30_min, x=kdjk_30_min.index, y=kdjk_30_min['kdjk'])# marker_color='purple')])
     fig.update_layout(
         xaxis_title="Index",
-        yaxis_title="Volumen",
+        yaxis_title="KDJK",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -73,10 +73,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=kdjk_4_horas['date_price'], y=kdjk_4_horas['volume'], marker_color='purple')])
+    fig = px.line(kdjk_4_horas, x=kdjk_4_horas['date_price'], y=kdjk_4_horas['kdjk'])
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="KDJK",
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -101,10 +101,10 @@ with st.container():
     st.plotly_chart(fig, use_container_width=True)
 
 with st.container():
-    fig = go.Figure(data=[go.Bar(x=kdjk_4_dias['date_price'], y=kdjk_4_dias['volume'], marker_color='purple')])
+    fig = px.line(kdjk_4_dias, x=kdjk_4_dias['date_price'], y=kdjk_4_dias['volume'])
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title="Volumen",
+        yaxis_title="KDJK",
     )
     st.plotly_chart(fig, use_container_width=True)
 
