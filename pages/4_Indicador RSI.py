@@ -49,6 +49,7 @@ with st.container():
         xaxis_title="Index",
         yaxis_title="Volumen",
     )
+    st.plotly_chart(fig, use_container_width=True)
 
 st.dataframe(rsi_30_min, use_container_width=True)
 
