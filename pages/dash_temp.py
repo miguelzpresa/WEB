@@ -56,7 +56,7 @@ with general_col1:
         st.plotly_chart(fig, use_container_width=True)
 
 with general_col2:
-    ohlc_df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+    ohlc_df = pd.read_csv('https://raw.githubusercontent.com/TICsonomics/Deployment/main/pdfs_output/ripple-kdjk-30%20minutos.csv')#https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
     fig = go.Figure(data=go.Ohlc(x=ohlc_df['Date'],
                     open=ohlc_df['AAPL.Open'],
                     high=ohlc_df['AAPL.High'],
