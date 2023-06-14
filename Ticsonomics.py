@@ -14,7 +14,7 @@ st.sidebar.header("Ticsonomics")
 
 Final project for the Distributed Computing subject, at ENES' Morelia B. Sc. Program "Tecnologías para la Información en Ciencias" (https://www.enesmorelia.unam.mx/)
 
-Welcome to our  crypto-trading AI Platform! In this project, we aim to process historical data of cryptocurrencies to identify patterns and trends within their behavior, to understand their behavior in the market, identify trends and make informed decisions in the field of investment. Through the analysis of prices and other relevant indicators, such as KDJK, MACD, PPSR, and MACD, offer useful insights for investors, and allow them to use this information to make informed trading decisions.
+Welcome to our  crypto-trading Platform! In this project, we aim to process historical data of cryptocurrencies to identify patterns and trends within their behavior, to understand their behavior in the market, identify trends and make informed decisions in the field of investment. Through the analysis of prices and other relevant indicators, such as KDJK, MACD, PPSR, and MACD, offer useful insights for investors, and allow them to use this information to make informed trading decisions.
 
 ____
 # Team_Members :family:
@@ -25,7 +25,7 @@ ____
 
 ____
 # License :space_invader:
-Copyright © 2023 <mikezpresa@gmail.com,ignacio.ireta@outlook.com>
+Copyright © 2023 <mikezpresa@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
